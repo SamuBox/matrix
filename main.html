@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>MATRIZ</p>
+  <canvas id="tutorial" width="500" height="700" style="border: 1px solid #000000">    
+  </canvas>
+  <script>
+    var lienzo = document.querySelector("canvas");
+    const width = lienzo.width
+    const height = lienzo.height
+    const horizontalSquares = 4;
+    const verticalSquares = 5;
+    const squareSize = width / horizontalSquares;
+
+
+    var context = lienzo.getContext("2d");
+    //context.fillRect(0,0,20,20);
+
+    
+    document.write("<br>", "width = ",  width, "<br> height = ", height);
+    let matriz = [horizontalSquares][verticalSquares];
+    let array = [0, 1, 2, 3, 4];
+    let x = 0;
+    let y = 0;
+    for (var j = 0; j < verticalSquares; j++){
+      // siguiente fila
+
+      for (var i = 0; i < horizontalSquares; i++){
+        context.strokeRect(x,y, squareSize, squareSize);
+        x = x + squareSize;
+      }
+
+      y = y + squareSize;
+      x = 0;
+    }
+        
+
+  </script>
+
+  <!-- <script src="file.js"></script> -->
+
+  <p>FINAL SCRIPT</p>
+
+</body>
+
+</html>
