@@ -5,14 +5,16 @@ const cols = 4;
 const rows = 5;
 const squareSize = width / cols;
 
+if(cols%2==1 && rows%2==1)
+    alert("two odds numbers cant have pairs")
 
 var context = lienzo.getContext("2d");
 matrix =  createMatrix(cols, rows);
 fillMatrix(matrix, cols, rows);
 drawMatrix(matrix, cols,rows,squareSize);
+checkUp(matrix, 0,0,rows);
 
 document.write("<br>", "width = ",  width, "<br> height = ", height);
-
 
 
 
@@ -54,5 +56,59 @@ function drawMatrix(matrix, cols, rows, squareSize){
         x = 0;
     }
 }
-    
 
+function checkUp(matrix, x, y, rows){
+    originalValue = matrix[x][y];
+    for(var i = 0; i<rows-1; i++){
+        if (x>0)
+            x = x -1;
+        else
+            x = rows -1;
+        newValue = matrix[x][y];
+        console.log(newValue);
+        if (originalValue == newValue){
+            return true;
+        }
+    }
+    return false;
+}
+    
+//down isn't needed because it's the same
+function checkUp(matrix, x, y, rows){
+    originalValue = matrix[x][y];
+    for(var i = 0; i<rows-1; i++){
+        if (x>0)
+            x = x -1;
+        else
+            x = rows -1;
+        newValue = matrix[x][y];
+        console.log(newValue);
+        if (originalValue == newValue){
+            return true;
+        }
+    }
+    return false;
+}
+
+//down isn't needed because it's the same
+function checkDiagonalUpLeft(matrix, x, y, rows, cols){
+    originalValue = matrix[x][y];
+    for(var i = 0; i<rows-1; i++){
+        if (x>0)
+            x = x -1;
+        else
+            x = rows -1;
+
+        if (y>0)
+            y = y -1;
+        else
+            y = cols -1;
+        
+        newValue = matrix[x][y];
+        console.log(newValue);
+        if (originalValue == newValue){
+            return true;
+        }
+    }
+    return false;
+}
